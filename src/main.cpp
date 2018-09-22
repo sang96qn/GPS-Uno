@@ -20,12 +20,12 @@ void setup()
   mySerial.begin(9600);
   delay(1000);
   Serial.println("uBlox Neo 6M");
-  Serial.print("Testing TinyGPS library v. ");
-  Serial.println(TinyGPS::library_version());
-  Serial.println("by Mikal Hart");
-  Serial.println();
-  Serial.print("Sizeof(gpsobject) = ");
-  Serial.println(sizeof(TinyGPS));
+//  Serial.print("Testing TinyGPS library v. ");
+//  Serial.println(TinyGPS::library_version());
+//  Serial.println("by Mikal Hart");
+//  Serial.println();
+//  Serial.print("Sizeof(gpsobject) = ");
+//  Serial.println(sizeof(TinyGPS));
   Serial.println();
 }
 
@@ -69,9 +69,9 @@ void gpsdump(TinyGPS &gps)
   byte month, day, hour, minute, second, hundredths;
   unsigned short sentences, failed;//Range	0 tới 65,535
 
-  gps.get_position(&lat, &lon, &age);
-  Serial.print("Lat/Long(10^-5 deg): "); Serial.print(lat); Serial.print(", "); Serial.print(lon);
-  Serial.print(" Fix age: "); Serial.print(age); Serial.println("ms.");
+  //gps.get_position(&lat, &lon, &age);
+  //Serial.print("Lat/Long(10^-5 deg): "); Serial.print(lat); Serial.print(", "); Serial.print(lon);
+  //Serial.print(" Fix age: "); Serial.print(age); Serial.println("ms.");
 
   // On Arduino, GPS characters may be lost during lengthy Serial.print()
   // On Teensy, Serial prints to USB, which has large output buffering and
@@ -80,12 +80,12 @@ void gpsdump(TinyGPS &gps)
 
   gps.f_get_position(&flat, &flon, &age);
   Serial.print("Lat/Long(float): "); printFloat(flat, 5); Serial.print(", "); printFloat(flon, 5);
-  Serial.print(" Fix age: "); Serial.print(age); Serial.println("ms.");
+//  Serial.print(" Fix age: "); Serial.print(age); Serial.println("ms.");
 
-  gps.get_datetime(&date, &time, &age);
-  Serial.print("Date(ddmmyy): "); Serial.print(date); Serial.print(" Time(hhmmsscc): ");
-    Serial.print(time);
-  Serial.print(" Fix age: "); Serial.print(age); Serial.println("ms.");
+//  gps.get_datetime(&date, &time, &age);
+//  Serial.print("Date(ddmmyy): "); Serial.print(date); Serial.print(" Time(hhmmsscc): ");
+//    Serial.print(time);
+//  Serial.print(" Fix age: "); Serial.print(age); Serial.println("ms.");
 
   gps.crack_datetime(&year, &month, &day, &hour, &minute, &second, &hundredths, &age);
   Serial.print("Date: "); Serial.print(static_cast<int>(month));/*ép kiểu*/ Serial.print("/");
@@ -93,20 +93,20 @@ void gpsdump(TinyGPS &gps)
   Serial.print("  Time: "); Serial.print(static_cast<int>(hour+7));  Serial.print(":"); //Serial.print("UTC +07:00 Viet Nam");
     Serial.print(static_cast<int>(minute)); Serial.print(":"); Serial.print(static_cast<int>(second));
     Serial.print("."); Serial.print(static_cast<int>(hundredths)); Serial.print(" UTC +07:00 Viet Nam");
-  Serial.print("  Fix age: ");  Serial.print(age); Serial.println("ms.");
+  //Serial.print("  Fix age: ");  Serial.print(age); Serial.println("ms.");
 
-  Serial.print("Alt(cm): "); Serial.print(gps.altitude()); Serial.print(" Course(10^-2 deg): ");
-    Serial.print(gps.course()); Serial.print(" Speed(10^-2 knots): "); Serial.println(gps.speed());
-  Serial.print("Alt(float): "); printFloat(gps.f_altitude()); Serial.print(" Course(float): ");
-    printFloat(gps.f_course()); Serial.println();
-  Serial.print("Speed(knots): "); printFloat(gps.f_speed_knots()); Serial.print(" (mph): ");
-    printFloat(gps.f_speed_mph());
-  Serial.print(" (mps): "); printFloat(gps.f_speed_mps()); Serial.print(" (kmph): ");
-    printFloat(gps.f_speed_kmph()); Serial.println();
+  //Serial.print("Alt(cm): "); Serial.print(gps.altitude()); Serial.print(" Course(10^-2 deg): ");
+  //  Serial.print(gps.course()); Serial.print(" Speed(10^-2 knots): "); Serial.println(gps.speed());
+  //Serial.print("Alt(float): "); printFloat(gps.f_altitude()); Serial.print(" Course(float): ");
+  //  printFloat(gps.f_course()); Serial.println();
+  //Serial.print("Speed(knots): "); printFloat(gps.f_speed_knots()); Serial.print(" (mph): ");
+  //  printFloat(gps.f_speed_mph());
+  //Serial.print(" (mps): "); printFloat(gps.f_speed_mps()); Serial.print(" (kmph): ");
+  //  printFloat(gps.f_speed_kmph()); Serial.println();
 
-  gps.stats(&chars, &sentences, &failed);
-  Serial.print("Stats: characters: "); Serial.print(chars); Serial.print(" sentences: ");
-    Serial.print(sentences); Serial.print(" failed checksum: "); Serial.println(failed);
+  //gps.stats(&chars, &sentences, &failed);
+  //Serial.print("Stats: characters: "); Serial.print(chars); Serial.print(" sentences: ");
+    //Serial.print(sentences); Serial.print(" failed checksum: "); Serial.println(failed);
 }
 
 void printFloat(double number, int digits)
