@@ -62,12 +62,12 @@ void loop() // run over and over
 
 void gpsdump(TinyGPS &gps)
 {
-  long lat, lon; //4 bytes
+ // long lat, lon; //4 bytes
   float flat, flon;
-  unsigned long age, date, time, chars;
+  unsigned long age;//, date, time, chars;
   int year;//4 bytes
   byte month, day, hour, minute, second, hundredths;
-  unsigned short sentences, failed;//Range	0 tới 65,535
+  //unsigned short sentences, failed;//Range	0 tới 65,535
 
   //gps.get_position(&lat, &lon, &age);
   //Serial.print("Lat/Long(10^-5 deg): "); Serial.print(lat); Serial.print(", "); Serial.print(lon);
